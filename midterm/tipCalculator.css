@@ -1,0 +1,27 @@
+body
+{
+	background-color: #FFA07A;
+}
+table 
+	{
+			border: 3px 
+			solid #red;
+			text-align:center;
+			
+	}
+tr {
+			font-family: "comic-sans MS";
+			height: 30px;
+			
+	}  
+footer 
+	{
+		display: flex;
+		justify-content: flex-start;
+		align-items: baseline;
+			  
+		  padding: 1rem;
+		  font-family:Orbitron;
+		  font-size: 20px;
+		 
+	}

@@ -1,0 +1,44 @@
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Homepage</title>
+	<link rel="stylesheet" href="tipCalculator.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tip Calculator Web Page</title>
+</head>
+<body>
+<h1> Tip Calculator</h1>
+<p> here is a tool for calculating tip based on the percentage give by the user and the total bill amount entered by the user! </p>
+<section>
+<table border=2>
+<tr>
+<th>
+<h1>Tip Calculator</h1></th>
+<tr>
+<td>
+<label for="bill_amount">Bill Amount:</label><br>
+<input type="text" id="bill_amount" name="billamt"><br>
+<label for="percentage">Tip %:</label><br>
+<input type="text" id="percentage" name="percentage_part"><br>
+</td>
+<td>
+
+<label for="tip">Tip:</label>
+<input type="text" id="tip" disabled="disabled"><br>
+
+<label for="totalamount">Total amount:</label>
+<input type="text" id="totalamount" disabled="disabled"><br>
+</td>
+</tr>
+<tr>
+<td>
+<input type="button" id="calculate" value="calculate" class="clc"><br> <td></tr></table>
+</section>
+<footer>
+		<h6> @ Copyright CKamboj inc. All rights reserved.
+		</h6>
+	</footer>
+<script src="tipCalculator.js"></script>
+</body>
+</html>
