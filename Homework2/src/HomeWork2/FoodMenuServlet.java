@@ -1,4 +1,4 @@
-package HomeWork2;
+package homework2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -59,17 +59,17 @@ public class FoodMenuServlet extends HttpServlet {
 					+ "<td>"+ entry.getPrice() + " </td>" 
 					+ "<td>"+ entry.getDescription() + " </td>" 
 					+ "<td><img src='"+entry.getImg_url()+"'height='60' width='60'>"+"'</td >"
-					+"<td><a href='FoodMenuServlet/edit?id=" + entry.getId() + "'>Edit</a> "
+					+"<td><a href='admin/foods/edit?id=" + entry.getId() + "'>Edit</a> "
 					+ "</td>" 
-					+"<td><a href='FoodMenuServlet/delete?id="+entry.getId()+"'>Delete</a>"
+					+"<td><a href='admin/foods/delete?id="+entry.getId()+"'>Delete</a>"
 					+"</td>"
 		+"</tr>"
 
 			);
 		}
 		out.println("</table>");
-		out.println("<a href='http://localhost:8080/cs-3220-homework2/admin/foods/create'>Add Food</a>");
-		out.println("<a href='http://localhost:8080/cs-3220-homework2/menu'>Go to the main menu</a>");
+		out.println("<a href='../admin/foods/create'>Add Food</a>");
+		out.println("<a href='../menu'>Go to the main menu</a>");
 		
 		out.println("</br>");
 		out.println("</br>");

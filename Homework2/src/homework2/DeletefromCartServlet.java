@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DeleteFoodServlet
+ * Servlet implementation class DeletefromCartServlet
  */
-@WebServlet("/admin/foods/delete")
-public class DeleteFoodServlet extends HttpServlet {
+@WebServlet("/shopping-cart/delete")
+public class DeletefromCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteFoodServlet() {
+    public DeletefromCartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,20 +30,24 @@ public class DeleteFoodServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
 		int id = Integer.parseInt(request.getParameter("id"));
-		List<CreateFoodEntry> entries = (List<CreateFoodEntry>) getServletContext().getAttribute("entries");
+		List<CreateFoodEntry> cart_entries = (List<CreateFoodEntry>) getServletContext().getAttribute("entries_order2");
 		int index = -1;
-		for (int i = 0; i < entries.size(); i ++) {
-			if (entries.get(i).getId() == id) {
+		for (int i = 0; i < cart_entries.size(); i++) {
+			if (cart_entries.get(i).getId() == id) {
 				index = i;
 			}
 		}
-		entries.remove(index);
-		getServletContext().setAttribute("entries", entries);
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<a href='http://localhost:8080/Cs-3320-Lab3/FoodMenuServlet'>go back to food menu</a>");
-	}
+		cart_entries.remove(index);
+		getServletContext().setAttribute("cart_entries", cart_entries);
+		out.println("<h5>Item Removed</h5>");
+		out.println("<a href='../shopping-cart'>back to Shopping Cart</a>");
+	    
 	}
 
+	
+
+}

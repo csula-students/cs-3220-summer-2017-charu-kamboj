@@ -1,5 +1,4 @@
-package HomeWork2;
-
+package homework2;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -32,11 +31,12 @@ public class AddinCart extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		int id = Integer.parseInt(request.getParameter("id"));
-		List<CreateFoodEntry> entries = (List<CreateFoodEntry>) getServletContext().getAttribute("entries");
+		@SuppressWarnings("unchecked")
+		List<CreateFoodEntry> entriess = (List<CreateFoodEntry>) getServletContext().getAttribute("entries");
 
 		CreateFoodEntry ent = null;
 
-		for (CreateFoodEntry entry : entries) {
+		for (CreateFoodEntry entry : entriess) {
 			if (entry.getId() == id) {
 				
 				ent = entry;
@@ -46,14 +46,15 @@ public class AddinCart extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		List<CreateFoodEntry> cart = (List<CreateFoodEntry>) getServletContext().getAttribute("cart");
+		@SuppressWarnings("unchecked")
+		List<CreateFoodEntry> cart = (List<CreateFoodEntry>) getServletContext().getAttribute("entries");
 
-		cart.add(new CreateFoodEntry(id, ent.getName(), ent.getDescription(), ent.getImg_url(),
-				ent.getPrice()));
+		cart.add(new CreateFoodEntry(ent.getId(), ent.getName(), ent.getDescription(), ent.getImg_url(),ent.getPrice()));
+		
 
 		getServletContext().setAttribute("cart", cart);
 
-		out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../app.css\">");
+		//out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../app.css\">");
 		out.println("<title>Shopping Cart </title>");
 		out.println("<h2>You put " + ent.getName() + " in your cart.</h2>");
 		out.println("<button onclick=\"location.href='../menu'\">Go back to FoodMenu</button>");
@@ -64,3 +65,4 @@ public class AddinCart extends HttpServlet {
 	
 
 }
+

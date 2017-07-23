@@ -1,4 +1,4 @@
-package HomeWork2;
+package homework2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,8 +27,8 @@ public class CartServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     public void init(){
-    	List<CreateFoodEntry> entries_cart=new ArrayList<>();
-    	getServletContext().setAttribute("entries_cart", entries_cart);
+    	List<CreateFoodEntry> entries_cartz=new ArrayList<>();
+    	getServletContext().setAttribute("entries_cartz", entries_cartz);
     }
 
 	/**
@@ -38,7 +38,7 @@ public class CartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		PrintWriter out = response.getWriter();
-		List<CreateFoodEntry> entries_food = (List<CreateFoodEntry>) getServletContext().getAttribute("entries_food");
+		List<CreateFoodEntry> entries_foodz = (List<CreateFoodEntry>) getServletContext().getAttribute("entries_foodz");
 
 		response.setContentType("text/html");
 
@@ -51,8 +51,8 @@ public class CartServlet extends HttpServlet {
 
 		out.println("<header>");
 
-		out.println("<h1><img src=" + "\"" + "http://www.clker.com/cliparts/V/v/E/P/w/D/restaurant-hi.png" + "\""
-				+ " width=\"100\" height=\"100\"> American's Food Restaurant </h1>");
+		out.println("<h1><img src=" + "\"" + "http://www.wgprovisions.com/wp-content/uploads/2015/12/smoke_house_creations_icon_color-1.png" + "\""
+				+ " width=\"100\" height=\"100\"> Smoke House Cafe! </h1>");
 		out.println("<nav>");
 		out.println("<ul>");
 		out.println("<li><a href=\"orders\">HomePage(Order Status)</a></li>");
@@ -67,9 +67,9 @@ public class CartServlet extends HttpServlet {
 
 		out.println("<h2> Shopping Cart </h2>");
 
-		List<CreateFoodEntry> entries_cart = (List<CreateFoodEntry>) getServletContext().getAttribute("entries_cart");
+		List<CreateFoodEntry> entries_cartz = (List<CreateFoodEntry>) getServletContext().getAttribute("cart");
 
-		if (entries_cart.size() == 0) {
+		if (entries_cartz.size() == 0) {
 			out.println("<table>" + "<tbody>" + "<tr>" + "<td>");
 
 			out.println("Your cart is empty. <br>");
@@ -85,12 +85,12 @@ public class CartServlet extends HttpServlet {
 					+ "Food Description" + "</th>" + "<th>" + "Food Image" + "</th>" + "<th>" + "Food Price" + "</th>"
 					+ "<th>" + " Remove From Cart " + "</th>" + "</tr>" + "<thead>");
 
-			for (CreateFoodEntry entry : entries_cart) {
+			for (CreateFoodEntry e : entries_cartz) {
 
-				out.println("<tbody>" + "<tr>" + "<td>" + entry.getId() + "</td>" + "<td>" + entry.getName() + "</td>"
-						+ "<td>" + entry.getDescription() + "</td>" + "<td><img src=" + "\"" + entry.getImg_url() + "\""
-						+ " width=\"200\" height=\"100\"></td>" + "<td> $" + entry.getPrice() + "</td>"
-						+ "<td><a href='shopping-cart/delete?id=" + entry.getId() + "'>Remove</a>" + "</td>" + "</tr>"
+				out.println("<tbody>" + "<tr>" + "<td>" + e.getId() + "</td>" + "<td>" + e.getName() + "</td>"
+						+ "<td>" + e.getDescription() + "</td>" + "<td><img src=" + "\"" + e.getImg_url() + "\""
+						+ " width=\"200\" height=\"100\"></td>" + "<td> $" + e.getPrice() + "</td>"
+						+ "<td><a href='shopping-cart/delete?id=" + e.getId() + "'>Remove</a>" + "</td>" + "</tr>"
 						+ "</tbody>");
 			}
 
@@ -117,24 +117,25 @@ out.println("</body>");
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Orders> entries_order = (List<Orders>) getServletContext().getAttribute("entries_order");
-		List<CreateFoodEntry> entries_cart = (List<CreateFoodEntry>) getServletContext().getAttribute("entries_cart");
+		List<Orders> entries_order2 = (List<Orders>) getServletContext().getAttribute("entries_order2");
+		List<CreateFoodEntry> entries_cartz = (List<CreateFoodEntry>) getServletContext().getAttribute("entries_cartz");
+		
 
-		for (CreateFoodEntry entry : entries_cart) {
+		for (CreateFoodEntry entry : entries_cartz) {
 
-			entries_order
-					.add(new Orders(entries_order.size(), entry, request.getParameter("name"), "IN_QUEUE", new Date()));
-			getServletContext().setAttribute("entries_order", entries_order);
+			entries_order2
+					.add(new Orders(entries_order2.size(), entry, request.getParameter("name"), "IN_QUEUE", new Date()));
+			getServletContext().setAttribute("entries_order2", entries_order2);
 		}
 
-		entries_cart.clear();
+		entries_cartz.clear();
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"app.css\">");
 		out.println("<title> Shopping Cart </title>");
 		out.println("<h2>Thank you for your order !</h2>");
-		out.println("<button onclick=\"location.href='orders'\">See your orders</button>");
+		out.println("<button onclick=\"location.href='/orders'\">See your orders</button>");
 }
 	
 

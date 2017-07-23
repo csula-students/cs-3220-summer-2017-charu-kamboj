@@ -1,14 +1,14 @@
-package HomeWork2;
+package homework2;
 
 public class CreateFoodEntry {
-	public final int id;
-	public final String name; 
-	public final String description;
-	public final String img_url;
-	public final int price;
+	public  int id;
+	public  String name; 
+	public  String description;
+	public  String img_url;
+	public  double price;
 	
 	
-	public CreateFoodEntry(int id,String name,String description,String img_url,int price){
+	public CreateFoodEntry(int id,String name,String description,String img_url,double price){
 		this.id=id;
 		this.name=name;
 		this.description=description;
@@ -33,7 +33,7 @@ public class CreateFoodEntry {
 		return img_url;
 	}
 	
-	public int getPrice(){
+	public double getPrice(){
 		return price;
 	}
 
