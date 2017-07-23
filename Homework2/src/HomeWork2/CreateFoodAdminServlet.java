@@ -1,4 +1,4 @@
-package HomeWork2;
+package homework2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -62,7 +62,8 @@ public class CreateFoodAdminServlet extends HttpServlet {
 		entries.add(new CreateFoodEntry(entries.size(),request.getParameter("name"),request.getParameter("Description"),request.getParameter("img_url"),Integer.parseInt(request.getParameter("price"))));
 		getServletContext().setAttribute("entries", entries);
 		PrintWriter out=response.getWriter();
-		response.sendRedirect("../FoodMenuServlet");
+		response.sendRedirect("http://localhost:8080/Homework2-cs3220/admin/foods");
 	}
 
 }
+

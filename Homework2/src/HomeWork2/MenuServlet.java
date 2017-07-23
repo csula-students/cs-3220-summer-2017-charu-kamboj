@@ -1,4 +1,4 @@
-package HomeWork2;
+package homework2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,7 +50,7 @@ public class MenuServlet extends HttpServlet {
 					+ "<td>"+ entry.getPrice() + " </td>" 
 					+ "<td>"+ entry.getDescription() + " </td>" 
 					+ "<td><img src='"+entry.getImg_url()+"'height='60' width='60'>"+"'</td >"
-					+"<td><a href='menu/add?id="+entry.getId()+"'>Add in the cart</a></td>"
+					+"<td><a href='/menu/add?id="+entry.getId()+"'>Add To cart</a></td>"
 					
 		+"</tr>"
 
@@ -73,3 +73,4 @@ public class MenuServlet extends HttpServlet {
 	}
 
 }
+
