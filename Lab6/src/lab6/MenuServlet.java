@@ -31,7 +31,7 @@ public class MenuServlet extends HttpServlet {
 		CreateFoodEntryDAO dao=new CreateFoodEntryDAO();
 		request.setAttribute("list", dao.list());
 		
-		request.getRequestDispatcher("/menu.jsp").forward(request, response);
+		request.getRequestDispatcher("/JDBC/menu.jsp").forward(request, response);
 	}
 
 	/**

@@ -27,7 +27,7 @@ public class AddFoodServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("create-food.jsp").forward(request, response);
+		request.getRequestDispatcher("/JDBC/create-food.jsp").forward(request, response);
 		
 	}
 
