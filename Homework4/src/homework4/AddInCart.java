@@ -27,21 +27,36 @@ public class AddInCart extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CreateFoodEntryDAO dao=new CreateFoodEntryDAO();
-		request.setAttribute("list", dao.list());
-		int id=Integer.parseInt(request.getParameter("id"));
-		//System.out.println(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
+
+		CreateFoodEntryDAO dao = new CreateFoodEntryDAO();
+		CreateFoodEntry itemToAdd = dao.get(id).get();
+		//CreateFoodEntry list_of_items=(CreateFoodEntry) dao.list();
+		//CreateFoodEntryDAO dao1=new CreateFoodEntryDAO();
 		
-		
-		List<CreateFoodEntry>items=(List<CreateFoodEntry>)getServletContext().getAttribute("");
-	
-		CreateFoodEntry entry=null;
-		
-		for(CreateFoodEntry fooditems: items){
-			if(fooditems.getId()==id){
-				entry=fooditems;
+		List<CreateFoodEntry> cart = new ArrayList<CreateFoodEntry>();
+		//List<CreateFoodEntry> cart = (List<CreateFoodEntry>) getServletContext().getAttribute("list");
+		//cart = (List<CreateFoodEntry>) getServletContext().getAttribute("list");
+		PrintWriter out = response.getWriter();
+		boolean item_already_in_cart = false;
+		//rejun
+		if (!cart.isEmpty()){
+			for (CreateFoodEntry item : cart) {
+				if (item.getId() == itemToAdd.getId()) {
+					item_already_in_cart = true;
+					//int current_quantity = item.getQuantity();
+					//item.setQuantity(current_quantity + 1);
+				}
 			}
 		}
+		if (item_already_in_cart == false) {
+			cart.add(itemToAdd);
+		}
+
+		getServletContext().setAttribute("cart", cart);
+
+		response.sendRedirect("CartServlet");
+}
 		
 		
 }
@@ -51,4 +66,4 @@ public class AddInCart extends HttpServlet {
 
 	
 
-}
+

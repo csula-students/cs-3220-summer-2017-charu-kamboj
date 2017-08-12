@@ -19,7 +19,7 @@
 			
 			<ul class="hyperlinks">
 				
-				<li><a href="<c:url value='../admin/orders'/>">Go to Order Status</a></li>
+				<li><a href="<c:url value='/OrderStatusServlet'/>">Go to Order Status</a></li>
 				
 			</ul>
 			</p>	
@@ -46,7 +46,7 @@
        		<td>${cartentry.getDesc()}</td>
        		<td><img src="${cartentry.getImage()}", width="70px"/></td>
        		<td>${cartentry.getPrice()}</td>
-       		<td><a href='shopping-cart/delete?id=${cartentry.getId()}'>Remove</a> </td>
+       		<td><a href='../Shopping-cart/delete?id=${cartentry.getId()}'>Remove</a> </td>
        		</tr>
        		</c:forEach>
        		</tbody>
