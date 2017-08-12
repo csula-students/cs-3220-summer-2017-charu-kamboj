@@ -1,7 +1,6 @@
 package homework4;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class OrderStatusServlet
+ * Servlet implementation class OrderStatusAdminServlet
  */
-@WebServlet("/OrderStatusServlet")
-public class OrderStatusServlet extends HttpServlet {
+@WebServlet("/OrderStatusAdminServlet")
+public class OrderStatusAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrderStatusServlet() {
+    public OrderStatusAdminServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,19 +27,11 @@ public class OrderStatusServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    public void init(){
-    	List<Order> orders=new ArrayList<>();
-    	getServletContext().setAttribute("orders","orders");
-    }
     public void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//List<JDBCOrder> orders = (List<JDBCOrder>) getServletContext().getAttribute("jdbc-orders");
-
-		OrderDAO dao = new OrderDAO();
-		request.setAttribute("orders", dao.list());
-
-		
-		request.getRequestDispatcher("/JDBC/Order.jsp")
-			.forward(request, response);
+		List<Order> orders = (List<Order>) getServletContext().getAttribute("jdbc-orders");
+		request.setAttribute("orders", orders);
+		request.getRequestDispatcher("/JDBC/order-statuses.jsp")
+            .forward(request, response);
 }
 
 }

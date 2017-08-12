@@ -34,7 +34,7 @@ public class AddInCart extends HttpServlet {
 		//CreateFoodEntry list_of_items=(CreateFoodEntry) dao.list();
 		//CreateFoodEntryDAO dao1=new CreateFoodEntryDAO();
 		
-		List<CreateFoodEntry> cart = new ArrayList<CreateFoodEntry>();//rejun
+		List<CreateFoodEntry> cart = new ArrayList<CreateFoodEntry>();
 		//List<CreateFoodEntry> cart = (List<CreateFoodEntry>) getServletContext().getAttribute("list");
 		//cart = (List<CreateFoodEntry>) getServletContext().getAttribute("list");
 		PrintWriter out = response.getWriter();

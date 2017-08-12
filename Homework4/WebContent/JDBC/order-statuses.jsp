@@ -29,27 +29,30 @@
 			</header>
 			<br><br><hr>
 <main>
-<h2> Your Orders are:</h2>
-<table >
+<h3> Manage Orders  </h3>
+            
+            <table class="center horizontal">
                 <thead>
                     <th>Order Info</th>
-                    <th>Orders Request</th>
+                    <th>Liquor Requests</th>
                     <th>Status</th>
+                    <th>Edit?</th>
+                    <th>Delete</th>
                 </thead>
                 <tbody>
                     <c:if test="${orders.size() == 0}">
                         <tr>
-                            <td colspan="3"><p>You have no Orders, go back to the menu and order. </p></td>
+                            <td colspan="5"><p>There are currently no Orders.</p></td>
                         </tr>
                     </c:if>
                     <c:forEach items="${orders}" var="order">
                         <tr>
-                            <td> ${order.getCustomerName()}<br>
-                                 ${order.getOrdertime()}
+                            <td>${order.getCustomerName()}<br>
+                                ${order.getOrdertime()}
                             </td>
-                            <td padding="1em">
-                                <table >
-
+                            
+                            <td>
+                                <table class="center">
                                     <c:forEach items="${order.getItems()}" var="item">
                                         <tr>
                                             
@@ -59,16 +62,19 @@
                                     </c:forEach> 
                                 </table>
                             </td>
+
                             <td>${order.getstatus()}</td>
+                            <td><a href="<c:url value='orders/edit?id=${order.getId()}' />" class="button">Edit Status</a>
+                                </td>
+                            <td><a href="<c:url value='orders/delete?id=${order.getId()}' />" class="button">Delete</a>
+                                </td>
                         </tr>
                     </c:forEach> 
                 </tbody>
             </table>
 
-</main>
-<footer>
-		<h6> @ Copyright CKamboj inc. All rights reserved.
-		</h6>
-	</footer>
+
+</main>			
+
 </body>
 </html>

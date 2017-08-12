@@ -20,7 +20,7 @@ public class OrderDAO implements DAO<Order> {
 		try(Connection c=db.connection()){
 			
 			Statement stmt =c.createStatement();
-			ResultSet rs=stmt.executeQuery("SELECT * FROM orders INNER JOIN order_foods INNER JOIN FoodItems WHERE orders.order_id = order_foods.order_foods_id AND menu.id = order_foods.menu_id;");
+			ResultSet rs=stmt.executeQuery("SELECT * FROM orders INNER JOIN order_foods INNER JOIN FoodItems WHERE orders.order_id = order_foods.order_foods_id AND FoodItems.id = order_foods.food_id;");
 				while(rs.next()){
 					int order_id=rs.getInt("order_id");
 					CreateFoodEntry food_item_to_add = new CreateFoodEntry(
