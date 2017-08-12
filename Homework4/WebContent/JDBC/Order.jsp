@@ -22,7 +22,7 @@
 			<ul class="hyperlinks">
 				
 				<li><a href="<c:url value='/OrderStatusServlet'/>">Go to Order Status</a></li>
-				<li><a href="<c:url value='../admin/orders'/>">Edit Order Status</a></li>
+				<li><a href="<c:url value='../OrderStatusAdminServlet'/>">Edit Order Status</a></li>
 			</ul>
 			</p>	
 			</section>

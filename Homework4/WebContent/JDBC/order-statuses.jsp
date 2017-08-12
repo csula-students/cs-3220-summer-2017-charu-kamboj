@@ -34,7 +34,7 @@
             <table class="center horizontal">
                 <thead>
                     <th>Order Info</th>
-                    <th>Liquor Requests</th>
+                    <th>Requests</th>
                     <th>Status</th>
                     <th>Edit?</th>
                     <th>Delete</th>
